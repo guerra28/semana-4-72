@@ -7,7 +7,7 @@ const router = routerx();
 router.post('/login', usuarioController.login);
 router.get('/list', usuarioController.list);
 router.put('/update', auth.verifyUsuario, usuarioController.update);
-router.post('/register', usuarioController.register);
+router.post('/add', usuarioController.add);
 router.put('/activate', auth.verifyUsuario, usuarioController.activate);
 router.put('/deactivate', auth.verifyUsuario, usuarioController.deactivate);
 

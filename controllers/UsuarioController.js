@@ -46,7 +46,7 @@ module.exports = {
         }
     },
 
-    register: async(req, res, next) => {
+    add: async(req, res, next) => {
         try {
 
             const usuario = await models.Usuario.findOne({
@@ -107,15 +107,19 @@ module.exports = {
 
         try {
 
-            const usuario = await models.Usuario.findOne({ where: { email: req.body.email } });
+            const usuario = await models.Usuario.findOne({ where: { id: req.body.id } });
 
             if (usuario) {
 
-                const user = await models.user.update({
-                    name: req.body.name
+                const user = await models.Usuario.update({
+                    nombre: req.body.nombre,
+                    rol: req.body.rol,
+                    password: req.body.password,
+                    email: req.body.email
+
                 }, {
                     where: {
-                        email: req.body.email
+                        email: req.body.id
                     }
                 });
                 res.status(200).json(user);
